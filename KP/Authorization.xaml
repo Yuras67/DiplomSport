@@ -1,0 +1,93 @@
+﻿<Window x:Class="KP.Authorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KP"
+        mc:Ignorable="d"
+        Title="Авторизация" MinHeight="300" MinWidth="450" MaxHeight="720" MaxWidth="1280">
+    <Window.Resources>
+        <ControlTemplate 
+            x:Key="NoMouseOverButtonTemplate"   
+            TargetType="Button">
+            <Border 
+                Background="{TemplateBinding Background}"  
+                BorderBrush="{TemplateBinding BorderBrush}"  
+                BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter 
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger 
+                    Property="IsEnabled"  
+                    Value="False">
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <LinearGradientBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                    <RotateTransform Angle="29.358" CenterX="0.5" CenterY="0.5"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </LinearGradientBrush.RelativeTransform>
+            <GradientStop Color="#2A5CFF"/>
+            <GradientStop Color="#FF6B35" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Viewbox Stretch="Uniform">
+        <Grid MinHeight="300" MinWidth="450" Height="450" Width="800" MaxHeight="720" MaxWidth="1280">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="70*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Вход" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80" FontSize="55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="150" Foreground="#FF2C3E50"/>
+            <Label Content="Логин" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" FontSize="25" Margin="275,0,0,0" Foreground="#FF2C3E50"/>
+            <Label Content="Пароль" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" FontSize="25" Margin="275,0,0,0" Foreground="#FF2C3E50"/>
+            <TextBox x:Name="LoginBox" HorizontalAlignment="Center" Grid.Row="1" Text="" VerticalAlignment="Bottom" Width="250" Height="40" FontSize="20" Margin="0,0,0,5" VerticalContentAlignment="Center"/>
+            <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Bottom" Width="250" Height="40" FontSize="20" Margin="0,0,0,5" VerticalContentAlignment="Center"/>
+            <Button Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" FontSize="25" Width="120" Grid.Row="4" Click="Button_Click" Foreground="#FF2C3E50" Background="#FF2A5CFF"/>
+            <StackPanel 
+                Visibility="Collapsed"
+                Name="CaptchaPanel" 
+                Grid.Row="3"
+                VerticalAlignment="Center">
+                <TextBlock 
+                    x:Name="CaptchaTextBlock" 
+                    FontSize="25" 
+                    FontWeight="Bold"
+                    Width="150" 
+                    Height="60" 
+                    FontFamily="Calibri" 
+                    TextAlignment="Center" 
+                    Foreground="White"/>
+                <TextBox 
+                    x:Name="CaptchaTextBox" 
+                    Width="120" 
+                    Height="40"/>
+                <Button
+                    x:Name="Update_Captcha" 
+                    Height="35" 
+                    Width="40" 
+                    BorderBrush="#00000000" 
+                    Margin="195,-140,0,0" 
+                    Click="Update_Captcha_Click" 
+                    Foreground="#00000000" 
+                    Template="{StaticResource NoMouseOverButtonTemplate}" 
+                    Background="{x:Null}">
+                    <Image x:Name="Update_Captcha_gif" 
+                       Source="/Resourses/loader.gif" 
+                       Stretch="Fill"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+</Window>

@@ -1,0 +1,50 @@
+﻿<Page x:Class="KP.Trainer_Folder.Pages.Tr_Service_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KP.Trainer_Folder.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Tr_Service_Page">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="79*"/>
+            <RowDefinition Height="334*"/>
+            <RowDefinition Height="37*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="790*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="TrDGrid_Service" AutoGenerateColumns="False" 
+                  Grid.Column="1" IsReadOnly="True" FontSize="9" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ServiceID}" Width="25"/>
+                <DataGridTextColumn Header="Название услуги" Binding="{Binding Title}" Width="*"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="*"/>
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding Price}" Width="*"/>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Click="Button_edit_data"
+                                    Name="BtnEdit" Background="#FF5CA9FF" FontSize="9" BorderThickness="0"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label 
+               Content="Журнал услуг" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Top" 
+               FontSize="20" 
+               Height="40" 
+               Width="230" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
+        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="100,0,0,5" Height="25" Width="500">
+            <Button x:Name="Button_Add" Margin="0,0,5,0" Content="Добавить услугу" Height="25" Width="90" Click="Button_Click" FontSize="10"/>
+
+        </StackPanel>
+    </Grid>
+</Page>
